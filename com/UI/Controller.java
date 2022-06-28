@@ -69,9 +69,9 @@ public class Controller extends JFrame implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == loginCommandButton) {
-            UserLogin login = new UserLogin();
+            new UserLogin();
         } else if(e.getSource() == registerCommandButton){
-            Data_User_Input uInput = new Data_User_Input();
+            new Data_User_Input();
         }
         else if(e.getSource() == closeProgramButton){
             dispose();

@@ -1,4 +1,4 @@
-package com.Database;
+package com.userlogic;
 import java.io.*;
 
 public class UserData implements Serializable {
@@ -18,7 +18,7 @@ public class UserData implements Serializable {
 
     // Serializing the input data by the user
     public void toPutDataIn(Object inData) throws IOException{
-        FileOutputStream fos   = new FileOutputStream("UserData.txt");
+        FileOutputStream fos   = new FileOutputStream("com\\DataBase\\UserData.txt");
         ObjectOutputStream oos = new ObjectOutputStream(fos);
         oos.writeObject(inData);
         oos.close();
