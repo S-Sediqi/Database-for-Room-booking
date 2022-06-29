@@ -16,6 +16,7 @@ public class UserLogin extends JFrame implements ActionListener{
     private JButton loginButton;
     private JButton cancelButton;
     private JButton bookingPage;
+    private JButton registrationPage;
 
     public String checkUsername = "user";
     public String checkPassword = "pass";
@@ -23,7 +24,7 @@ public class UserLogin extends JFrame implements ActionListener{
     public UserLogin(){
         
         setTitle("Login Panel");
-        setBounds(300, 90, 400, 300);
+        setBounds(300, 90, 400, 400);
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         setResizable(false);
 
@@ -68,7 +69,7 @@ public class UserLogin extends JFrame implements ActionListener{
         loginExecution = new JLabel("waiting...");
         loginExecution.setFont(new Font("Arial", Font.PLAIN, 15));
         loginExecution.setSize(250, 25);
-        loginExecution.setLocation(50, 220);
+        loginExecution.setLocation(50, 320);
         c.add(loginExecution);
 
         // creates a button for login command input
@@ -98,6 +99,15 @@ public class UserLogin extends JFrame implements ActionListener{
         bookingPage.addActionListener(this);
         c.add(bookingPage);
 
+        // after the login a validated this button allows the user to Room Booking page
+        registrationPage = new JButton("To Registration Page");
+        registrationPage.setFont(new Font("Arial", Font.PLAIN, 15));
+        registrationPage.setSize(190, 20);
+        registrationPage.setLocation(100, 220);
+        registrationPage.setFocusable(false);
+        registrationPage.addActionListener(this);
+        c.add(registrationPage);
+
         setVisible(true);
     }
 
@@ -114,8 +124,19 @@ public class UserLogin extends JFrame implements ActionListener{
             }
         } 
 
-        else if(e.getSource() == cancelButton){
+        if (e.getSource() == registrationPage) {
+            new Data_User_Input();
             dispose();
         }
+
+        if (e.getSource() == bookingPage) {
+            new RoomBooking();
+            dispose();
+        }
+
+        if(e.getSource() == cancelButton){
+            dispose();
+        }
+        
     }
 }

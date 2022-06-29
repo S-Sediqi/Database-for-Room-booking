@@ -269,6 +269,10 @@ public class Data_User_Input extends JFrame implements ActionListener {
       checkInfo.setSelected(false);
       resadd.setText(def);
     }
+    if (e.getSource() == loginPage) {
+      new UserLogin();
+      dispose();
+    }
 
     // gets the user out of the panel
     else if(e.getSource() == exitButton){

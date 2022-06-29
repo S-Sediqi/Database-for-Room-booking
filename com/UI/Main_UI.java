@@ -7,7 +7,6 @@ public class Main_UI {
 		new Controller();
 	}
 
-	
 	public static void main(String[] args) throws Exception{
 		toControll();
 	}
