@@ -180,6 +180,7 @@ public class Data_User_Input extends JFrame implements ActionListener {
     exitButton.addActionListener(this);
     c.add(exitButton);
 
+    // after the user registered, this button can open the login panel
     loginPage = new JButton("To Login");
     loginPage.setFont(new Font("Arial", Font.PLAIN, 15));
     loginPage.setSize(300, 20);
@@ -204,6 +205,7 @@ public class Data_User_Input extends JFrame implements ActionListener {
     res.setLocation(100, 500);
     c.add(res);
 
+    // creates a text area where user could see the input data(data to be stored)
     resadd = new JTextArea();
     resadd.setFont(new Font("Arial", Font.PLAIN, 15));
     resadd.setSize(200, 75);
@@ -238,9 +240,11 @@ public class Data_User_Input extends JFrame implements ActionListener {
         info.setEditable(false);
         res.setText("Registred Successfully!");
 
+        // creates a new user registry
         UserData newUser = new UserData(
           uID.getText(), uFirstName.getText(), uLastName.getText(), uEmail.getText(), uPass.getText());
           try {
+            // calls a method, that takes the input data and store it in a (.txt) file in binary code
             newUser.toPutDataIn(newUser);
           } catch (IOException e1) {
             // TODO Auto-generated catch block
@@ -266,6 +270,7 @@ public class Data_User_Input extends JFrame implements ActionListener {
       resadd.setText(def);
     }
 
+    // gets the user out of the panel
     else if(e.getSource() == exitButton){
       dispose();
     }

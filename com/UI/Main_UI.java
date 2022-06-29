@@ -9,8 +9,6 @@ public class Main_UI {
 
 	
 	public static void main(String[] args) throws Exception{
-		//toRegister();
-		//toLogin();
 		toControll();
 	}
 }

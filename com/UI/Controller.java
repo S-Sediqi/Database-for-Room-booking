@@ -69,8 +69,10 @@ public class Controller extends JFrame implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == loginCommandButton) {
+            // opens the login panel foe the user 
             new UserLogin();
         } else if(e.getSource() == registerCommandButton){
+            // opens the registration panel for the user
             new Data_User_Input();
         }
         else if(e.getSource() == closeProgramButton){
