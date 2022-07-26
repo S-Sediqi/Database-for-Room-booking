@@ -1,10 +1,10 @@
-package com.userlogic;
+package com.userUI;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class UserLogin extends JFrame implements ActionListener{
+public class UserLogin_UI extends JFrame implements ActionListener{
     
     private Container c;
     private JLabel title;
@@ -21,7 +21,7 @@ public class UserLogin extends JFrame implements ActionListener{
     public String checkUsername = "user";
     public String checkPassword = "pass";
 
-    public UserLogin(){
+    public UserLogin_UI(){
         
         setTitle("Login Panel");
         setBounds(300, 90, 400, 400);
@@ -125,12 +125,12 @@ public class UserLogin extends JFrame implements ActionListener{
         } 
 
         if (e.getSource() == registrationPage) {
-            new Data_User_Input();
+            new UserRegistration_UI();
             dispose();
         }
 
         if (e.getSource() == bookingPage) {
-            new RoomBooking();
+            new RoomBooking_UI();
             dispose();
         }
 

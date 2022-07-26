@@ -1,10 +1,10 @@
-package com.userlogic;
+package com.userUI;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class RoomBooking extends JFrame implements ActionListener {
+public class RoomBooking_UI extends JFrame implements ActionListener {
     
     private Container c;
     private JLabel title;
@@ -16,7 +16,7 @@ public class RoomBooking extends JFrame implements ActionListener {
     private String filterOptions[] = {"Number", "Name", "Floor"};
 
 
-    public RoomBooking() {
+    public RoomBooking_UI() {
         setTitle("Registration");
         setBounds(300, 90, 1000, 600);
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);

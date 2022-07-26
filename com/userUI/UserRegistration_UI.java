@@ -1,10 +1,13 @@
-package com.userlogic;
+package com.userUI;
 import javax.swing.*;
+
+import com.Logic.UserData_in_out;
+
 import java.awt.*;
 import java.awt.event.*;
 import java.io.IOException;
 
-public class Data_User_Input extends JFrame implements ActionListener {
+public class UserRegistration_UI extends JFrame implements ActionListener {
 
   // Elements of the UI for User Registration
   private Container c;
@@ -33,7 +36,7 @@ public class Data_User_Input extends JFrame implements ActionListener {
   private JButton exitButton;
 
   // the constructor creates each elements of the User Registration UI
-  public Data_User_Input() {
+  public UserRegistration_UI() {
     setTitle("Registration");
     setBounds(300, 90, 900, 600);
     setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
@@ -241,7 +244,7 @@ public class Data_User_Input extends JFrame implements ActionListener {
         res.setText("Registred Successfully!");
 
         // creates a new user registry
-        UserData newUser = new UserData(
+        UserData_in_out newUser = new UserData_in_out(
           uID.getText(), uFirstName.getText(), uLastName.getText(), uEmail.getText(), uPass.getText());
           try {
             // calls a method, that takes the input data and store it in a (.txt) file in binary code
@@ -270,7 +273,7 @@ public class Data_User_Input extends JFrame implements ActionListener {
       resadd.setText(def);
     }
     if (e.getSource() == loginPage) {
-      new UserLogin();
+      new UserLogin_UI();
       dispose();
     }
 

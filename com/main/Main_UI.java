@@ -1,4 +1,4 @@
-package com.UI;
+package com.main;
 
 // Driver Code
 public class Main_UI {

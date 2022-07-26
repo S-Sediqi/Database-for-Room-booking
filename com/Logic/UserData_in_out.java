@@ -1,14 +1,14 @@
-package com.userlogic;
+package com.Logic;
 import java.io.*;
 
-public class UserData implements Serializable {
+public class UserData_in_out implements Serializable {
     private String userId;
     private String userFName;
     private String userLName;
     private String userEmail;
     private String userPass;
 
-    public UserData(String userId, String userFName, String userLName, String userEmail, String userPass) {
+    public UserData_in_out(String userId, String userFName, String userLName, String userEmail, String userPass) {
         this.userId    = userId;
         this.userFName = userFName;
         this.userLName = userLName;
@@ -29,7 +29,7 @@ public class UserData implements Serializable {
         String answer = "";
         FileInputStream fis   = new FileInputStream("com.Database.UserData.txt");
 		ObjectInputStream ois = new ObjectInputStream(fis);
-		UserData outData = (UserData)ois.readObject();
+		UserData_in_out outData = (UserData_in_out)ois.readObject();
         if (requestedData.equals("id")) {
             answer = outData.userId;
         }

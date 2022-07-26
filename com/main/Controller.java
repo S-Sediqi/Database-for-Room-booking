@@ -1,6 +1,8 @@
-package com.UI;
-import com.userlogic.*;
+package com.main;
 import javax.swing.*;
+
+import com.userUI.*;
+
 import java.awt.*;
 import java.awt.event.*;
 
@@ -70,10 +72,10 @@ public class Controller extends JFrame implements ActionListener{
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == loginCommandButton) {
             // opens the login panel foe the user 
-            new UserLogin();
+            new UserLogin_UI();
         } else if(e.getSource() == registerCommandButton){
             // opens the registration panel for the user
-            new Data_User_Input();
+            new UserRegistration_UI();
         }
         else if(e.getSource() == closeProgramButton){
             dispose();
