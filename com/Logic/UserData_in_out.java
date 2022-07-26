@@ -17,7 +17,7 @@ public class UserData_in_out implements Serializable {
     }
 
     // Serializing the input data by the user
-    public void toPutDataIn(Object inData) throws IOException{
+    public void toWriteData(Object inData) throws IOException{
         FileOutputStream fos   = new FileOutputStream("com\\DataBase\\UserData.txt");
         ObjectOutputStream oos = new ObjectOutputStream(fos);
         oos.writeObject(inData);
@@ -25,7 +25,7 @@ public class UserData_in_out implements Serializable {
     }
 
     // De-serializing the data from the txt file 
-    public String toTakeDataOut(String requestedData) throws IOException, ClassNotFoundException{
+    public String toReadData(String requestedData) throws IOException, ClassNotFoundException{
         String answer = "";
         FileInputStream fis   = new FileInputStream("com.Database.UserData.txt");
 		ObjectInputStream ois = new ObjectInputStream(fis);
