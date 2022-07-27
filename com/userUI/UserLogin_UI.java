@@ -1,6 +1,9 @@
 package com.userUI;
 
 import javax.swing.*;
+
+import com.main.Controller;
+
 import java.awt.*;
 import java.awt.event.*;
 
@@ -135,8 +138,8 @@ public class UserLogin_UI extends JFrame implements ActionListener{
         }
 
         if(e.getSource() == cancelButton){
+            new Controller();
             dispose();
         }
-        
     }
 }

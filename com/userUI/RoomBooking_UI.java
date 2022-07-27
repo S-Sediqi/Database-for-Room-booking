@@ -1,6 +1,9 @@
 package com.userUI;
 
 import javax.swing.*;
+
+import com.main.Controller;
+
 import java.awt.*;
 import java.awt.event.*;
 
@@ -12,9 +15,7 @@ public class RoomBooking_UI extends JFrame implements ActionListener {
     private JTextField searchText;
     private JComboBox filter;
     private JButton exitListPanel;
-
-    private String filterOptions[] = {"Number", "Name", "Floor"};
-
+    private String filterChoice;
 
     public RoomBooking_UI() {
         setTitle("Registration");
@@ -50,7 +51,9 @@ public class RoomBooking_UI extends JFrame implements ActionListener {
         c.add(searchText);
 
         // creates the filter option for the user
+        String filterOptions[] = {"Number", "Name", "Floor"};
         filter = new JComboBox(filterOptions);
+        filter.addActionListener(this);
         filter.setFont(new Font("Arial", Font.PLAIN, 15));
         filter.setSize(80, 20);
         filter.setLocation(400, 72);
@@ -69,12 +72,23 @@ public class RoomBooking_UI extends JFrame implements ActionListener {
 
     }
 
+    public void setFilter(String str_in) {
+        this.filterChoice = str_in;
+    }
+    public String getFilter() {
+        return this.filterChoice;
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == filter) {
+            setFilter((String) filter.getSelectedItem());
+        }
         if (e.getSource() == searchButton) {
             
         }
         if (e.getSource() == exitListPanel) {
+            new Controller();
             dispose();
         }
 

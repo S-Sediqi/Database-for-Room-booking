@@ -1,6 +1,7 @@
 package com.userUI;
 
 import com.Logic.*;
+import com.main.Controller;
 
 import javax.swing.*;
 import java.awt.*;
@@ -220,26 +221,25 @@ public class UserRegistration_UI extends JFrame implements ActionListener {
 
   public void actionPerformed(ActionEvent e) {
     if (e.getSource() == signUp) {
-
+      String str1 = "";
+      String reg_Data = "";
+      String job = "";
       // the terms should be first accepted by the user
       if (checkInfo.isSelected()) {
-
-        String reg_Data;
-        String job;
         // shows if the user is a teacher or a student
-        String str1;
         if (teacher.isSelected()) {
           str1 = "User Type : Teacher " + "\n";
           job = "Teacher, ";
-
-        } else {
+        } 
+        if (student.isSelected()) {
           str1 = "User Type : Student " + "\n";
           job = "Student, ";
-
+        }
         // gets the user data (Full name and ID/Matriculation No.)
         String str2 = "First Name : " + uFirstName.getText() + "\n"
             + "Last Name :  " + uLastName.getText() + "\n"
             + "ID No.  : " + uID.getText() + "\n";
+
         // gets the Email Address of the user
         String str3 = "Email : " + uEmail.getText();
         info.setText(str1 + str2 + str3);
@@ -257,25 +257,13 @@ public class UserRegistration_UI extends JFrame implements ActionListener {
         inCVS.toWriteCSV_User(reg_Data);
 
         res.setText("Registred Successfully!");
-
-        // creates a new user registry
-        /*UserData_in_out newUser = new UserData_in_out(
-          uID.getText(), uFirstName.getText(), uLastName.getText(), uEmail.getText(), uPass.getText());
-          try {
-            // calls a method, that takes the input data and store it in a (.txt) file in binary code
-            newUser.toWriteData(newUser);
-          } catch (IOException e1) {
-            e1.printStackTrace();
-          }
-          */
-        }  
-      } else {
+      } 
+      if (!checkInfo.isSelected()) {
         info.setText("");
         resadd.setText("");
         res.setText("Please check the box (All information is correct).");
       }
-    }
-
+    }  
     // it will reset and clear all the data from their fields
     else if (e.getSource() == reset) {
       String def = "";
@@ -288,14 +276,14 @@ public class UserRegistration_UI extends JFrame implements ActionListener {
       info.setText(def);
       checkInfo.setSelected(false);
       resadd.setText(def);
-    }
-    if (e.getSource() == loginPage) {
+    } 
+    else if (e.getSource() == loginPage) {
       new UserLogin_UI();
       dispose();
     }
-
     // gets the user out of the panel
     else if(e.getSource() == exitButton){
+      new Controller();
       dispose();
     }
   }

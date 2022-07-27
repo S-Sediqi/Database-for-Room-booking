@@ -1,1 +1,3 @@
-open/close, RoomNo, RoomName, Location, t1, t2, t3, t4, t5, t6
+Status,RoomNo,RoomName,Location,Capacity,Resources
+OPEN, 205, lecture, 3.floor, 40, projector
+OPEN, 405, PC pool, 4.floor, 30, projector-25PCs
