@@ -13,12 +13,13 @@ public class Controller extends JFrame implements ActionListener{
     private JLabel command;
     private JButton loginCommandButton;
     private JButton registerCommandButton;
+    private JButton roomCreatingButton;
     private JButton closeProgramButton;
 
     public Controller() {
 
         setTitle("FH Room Booking System");
-        setBounds(300, 90, 400, 200);
+        setBounds(300, 90, 400, 280);
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         setResizable(false);
         setVisible(true);
@@ -37,7 +38,7 @@ public class Controller extends JFrame implements ActionListener{
         command = new JLabel("waiting...");
         command.setFont(new Font("Arial", Font.PLAIN, 15));
         command.setSize(250, 25);
-        command.setLocation(50, 180);
+        command.setLocation(50, 200);
         c.add(command);
 
         // creates a button for initiating/opening login panel
@@ -62,10 +63,19 @@ public class Controller extends JFrame implements ActionListener{
         closeProgramButton = new JButton("CLOSE PROGRAM");
         closeProgramButton.setFont(new Font("Arial", Font.PLAIN, 18));
         closeProgramButton.setSize(270, 30);
-        closeProgramButton.setLocation(50, 120);
+        closeProgramButton.setLocation(50, 160);
         closeProgramButton.setFocusable(false);
         closeProgramButton.addActionListener(this);
         c.add(closeProgramButton);
+
+        // creates a button for admin to create/enter room data
+        roomCreatingButton = new JButton("Create Room");
+        roomCreatingButton.setFont(new Font("Arial", Font.PLAIN, 18));
+        roomCreatingButton.setSize(270, 30);
+        roomCreatingButton.setLocation(50, 120);
+        roomCreatingButton.setFocusable(false);
+        roomCreatingButton.addActionListener(this);
+        c.add(roomCreatingButton);
     }
 
     @Override
@@ -73,9 +83,14 @@ public class Controller extends JFrame implements ActionListener{
         if (e.getSource() == loginCommandButton) {
             // opens the login panel foe the user 
             new UserLogin_UI();
-        } else if(e.getSource() == registerCommandButton){
+        } 
+        else if(e.getSource() == registerCommandButton){
             // opens the registration panel for the user
             new UserRegistration_UI();
+        }
+        else if (e.getSource() == roomCreatingButton) {
+            // opens the panel for admin to create a room
+            new RoomRegistration_UI();
         }
         else if(e.getSource() == closeProgramButton){
             dispose();

@@ -1,12 +1,10 @@
 package com.userUI;
+
+import com.Logic.*;
+
 import javax.swing.*;
-
-import com.Logic.Data_Reader_Writer;
-import com.Logic.UserData_in_out;
-
 import java.awt.*;
 import java.awt.event.*;
-import java.io.IOException;
 
 public class UserRegistration_UI extends JFrame implements ActionListener {
 
@@ -230,9 +228,10 @@ public class UserRegistration_UI extends JFrame implements ActionListener {
         String job;
         // shows if the user is a teacher or a student
         String str1;
-        if (teacher.isSelected()){
+        if (teacher.isSelected()) {
           str1 = "User Type : Teacher " + "\n";
           job = "Teacher, ";
+
         } else {
           str1 = "User Type : Student " + "\n";
           job = "Student, ";
@@ -241,22 +240,26 @@ public class UserRegistration_UI extends JFrame implements ActionListener {
         String str2 = "First Name : " + uFirstName.getText() + "\n"
             + "Last Name :  " + uLastName.getText() + "\n"
             + "ID No.  : " + uID.getText() + "\n";
-            reg_Data =  uID.getText() + ", "+ job +
-                        uFirstName.getText()+", "+
-                        uLastName.getText() +", "+
-                        uEmail.getText()+ ", " +
-                        uPass.getText();
-
-        Data_Reader_Writer inCVS = new Data_Reader_Writer();
-        inCVS.writingCSV(reg_Data);
         // gets the Email Address of the user
         String str3 = "Email : " + uEmail.getText();
         info.setText(str1 + str2 + str3);
         info.setEditable(false);
+
+        // puts all the user data into a Sting separated with comma - for CSV file
+        reg_Data =  uID.getText() + ", "+ job +
+                    uFirstName.getText()+", "+
+                    uLastName.getText() +", "+
+                    uEmail.getText()+ ", " +
+                    uPass.getText();
+
+        // creates a constructor of user data entry class and saves the given data into the CSV file
+        User_Data_RW inCVS = new User_Data_RW();
+        inCVS.toWriteCSV_User(reg_Data);
+
         res.setText("Registred Successfully!");
 
         // creates a new user registry
-        UserData_in_out newUser = new UserData_in_out(
+        /*UserData_in_out newUser = new UserData_in_out(
           uID.getText(), uFirstName.getText(), uLastName.getText(), uEmail.getText(), uPass.getText());
           try {
             // calls a method, that takes the input data and store it in a (.txt) file in binary code
@@ -264,6 +267,7 @@ public class UserRegistration_UI extends JFrame implements ActionListener {
           } catch (IOException e1) {
             e1.printStackTrace();
           }
+          */
         }  
       } else {
         info.setText("");
@@ -279,6 +283,7 @@ public class UserRegistration_UI extends JFrame implements ActionListener {
       uLastName.setText(def);
       uEmail.setText(def);
       uID.setText(def);
+      uPass.setText(def);
       res.setText(def);
       info.setText(def);
       checkInfo.setSelected(false);
