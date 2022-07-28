@@ -1,26 +1,24 @@
 package com.main;
-import javax.swing.*;
 
 import com.userUI.*;
 
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class Controller extends JFrame implements ActionListener{
+public class Welcome extends JFrame implements ActionListener{
 
     private Container c;
     private JLabel title;
     private JLabel command;
     private JButton loginCommandButton;
     private JButton registerCommandButton;
-    private JButton roomCreatingButton;
-    private JButton userListpageButton;
     private JButton closeProgramButton;
 
-    public Controller() {
+    public Welcome() {
 
         setTitle("FH Room Booking System");
-        setBounds(300, 90, 400, 380);
+        setBounds(300, 90, 400, 250);
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         setResizable(false);
         setVisible(true);
@@ -39,7 +37,7 @@ public class Controller extends JFrame implements ActionListener{
         command = new JLabel("waiting...");
         command.setFont(new Font("Arial", Font.PLAIN, 15));
         command.setSize(250, 25);
-        command.setLocation(50, 250);
+        command.setLocation(50, 170);
         c.add(command);
 
         // creates a button for initiating/opening login panel
@@ -60,29 +58,11 @@ public class Controller extends JFrame implements ActionListener{
         registerCommandButton.addActionListener(this);
         c.add(registerCommandButton);
 
-        // creates a button for admin to create/enter room data
-        roomCreatingButton = new JButton("Create Room");
-        roomCreatingButton.setFont(new Font("Arial", Font.PLAIN, 18));
-        roomCreatingButton.setSize(270, 30);
-        roomCreatingButton.setLocation(50, 120);
-        roomCreatingButton.setFocusable(false);
-        roomCreatingButton.addActionListener(this);
-        c.add(roomCreatingButton);
-
-        // creates a button for admin to see the user data - all user list
-        userListpageButton = new JButton("User List");
-        userListpageButton.setFont(new Font("Arial", Font.PLAIN, 18));
-        userListpageButton.setSize(270, 30);
-        userListpageButton.setLocation(50, 160);
-        userListpageButton.setFocusable(false);
-        userListpageButton.addActionListener(this);
-        c.add(userListpageButton);
-
         // creates a button for closing the whole program 
         closeProgramButton = new JButton("CLOSE PROGRAM");
         closeProgramButton.setFont(new Font("Arial", Font.PLAIN, 18));
         closeProgramButton.setSize(270, 30);
-        closeProgramButton.setLocation(50, 200);
+        closeProgramButton.setLocation(50, 120);
         closeProgramButton.setFocusable(false);
         closeProgramButton.addActionListener(this);
         c.add(closeProgramButton);
@@ -98,17 +78,7 @@ public class Controller extends JFrame implements ActionListener{
         } 
         else if(e.getSource() == registerCommandButton){
             // opens the registration panel for the user
-            new UserAdminReg_UI();
-            dispose();
-        }
-        else if (e.getSource() == roomCreatingButton) {
-            // opens the panel for admin to create a room
-            new RoomRegistration_UI();
-            dispose();
-        }
-        else if (e.getSource() == userListpageButton) {
-            // opens a page with a list of all users and their data
-            new UserList_UI();
+            new UserSelfReg_UI();
             dispose();
         }
         else if(e.getSource() == closeProgramButton){

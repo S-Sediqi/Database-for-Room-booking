@@ -29,15 +29,15 @@ public class User_Data_RW {
             e.printStackTrace();
         }
     }
-    
+
     // This method reads the data back from the USER CSV file
     public void toReadCSV_User() {
         try {
             BufferedReader file_out = new BufferedReader(new FileReader(path));
 
-            String csvline = "";
-            while ( (csvline = file_out.readLine()) != null ) {
-                String[] dataLine = csvline.split(COMMA_DELIMITER);
+            String csvLine = "";
+            while ( (csvLine = file_out.readLine()) != null ) {
+                String[] dataLine = csvLine.split(COMMA_DELIMITER);
 
                 // saving each data of User into a separate ArrayList
                 uID_List.add(dataLine[0]);
@@ -55,13 +55,39 @@ public class User_Data_RW {
             userList.add(uLName_List);
             userList.add(uEmail_List);
             userList.add(uPass_List);
-            for (ArrayList<String> i : userList) {
-                System.out.println(i);
-            }
             
             file_out.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public String[][] getDataList(){
+        int colSize = userList.size();
+        int rowSize = userList.get(0).size();
+        String[][] arrData = new String[rowSize][colSize];
+
+        for (int i = 0; i < arrData.length; i++) {
+            for (int j = 0; j < arrData[i].length; j++) {
+                arrData[i][j] = userList.get(j).get(i);
+            }
+        }
+        return arrData;
+    }
+    /* 
+    public String toTestLists() {
+        int a = roomList.get(0).size();
+        String answer = Integer.toString(a);
+        return answer;
+    }
+    */
+    public String[] getHeaderList() {
+        int arrSize = userList.size();
+        String[] arrHeader = new String[arrSize];
+
+        for (int i = 0; i < arrHeader.length; i++) {
+            arrHeader[i] = userList.get(i).get(0);
+        }
+        return arrHeader;
     }
 }

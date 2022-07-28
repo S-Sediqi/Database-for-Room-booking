@@ -35,9 +35,9 @@ public class Room_Data_RW {
         try {
             BufferedReader bReader = new BufferedReader(new FileReader(path));
             
-            String csvline = "";
-            while ( (csvline = bReader.readLine()) != null ) {
-                String[] dataLine = csvline.split(COMMA_DELIMITER);
+            String csvLine = "";
+            while ( (csvLine = bReader.readLine()) != null ) {
+                String[] dataLine = csvLine.split(COMMA_DELIMITER);
 
                 // saving each data of room into a separate ArrayList
                 rStatus_List.add(dataLine[0]);
@@ -55,13 +55,39 @@ public class Room_Data_RW {
             roomList.add(rLocation_List);
             roomList.add(rCapacity_List);
             roomList.add(rResources_List);
-            for (ArrayList<String> i : roomList) {
-                System.out.println(i);
-            }
 
             bReader.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public String[][] getDataList(){
+        int colSize = roomList.size();
+        int rowSize = roomList.get(0).size();
+        String[][] arrData = new String[rowSize][colSize];
+
+        for (int i = 0; i < arrData.length; i++) {
+            for (int j = 0; j < arrData[i].length; j++) {
+                arrData[i][j] = roomList.get(j).get(i);
+            }
+        }
+        return arrData;
+    }
+    /* 
+    public String toTestLists() {
+        int a = roomList.get(0).size();
+        String answer = Integer.toString(a);
+        return answer;
+    }
+    */
+    public String[] getHeaderList() {
+        int arrSize = roomList.size();
+        String[] arrHeader = new String[arrSize];
+
+        for (int i = 0; i < arrHeader.length; i++) {
+            arrHeader[i] = roomList.get(i).get(0);
+        }
+        return arrHeader;
     }
 }

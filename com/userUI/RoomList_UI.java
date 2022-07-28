@@ -1,23 +1,25 @@
 package com.userUI;
 
+import com.main.Welcome;
+import com.Logic.*;
+
 import javax.swing.*;
-
-import com.main.Controller;
-
 import java.awt.*;
 import java.awt.event.*;
 
-public class RoomBooking_UI extends JFrame implements ActionListener {
+public class RoomList_UI extends JFrame implements ActionListener {
     
     private Container c;
     private JLabel title;
     private JButton searchButton;
     private JTextField searchText;
-    private JComboBox filter;
+    private JComboBox<String> filter;
     private JButton exitListPanel;
     private String filterChoice;
+    //private JTable table;
+    //private JScrollPane sp;
 
-    public RoomBooking_UI() {
+    public RoomList_UI() {
         setTitle("Registration");
         setBounds(300, 90, 1000, 600);
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
@@ -25,7 +27,6 @@ public class RoomBooking_UI extends JFrame implements ActionListener {
     
         c = getContentPane();
         c.setLayout(null);
-    
 
         // Creates a title for the input page
         title = new JLabel("FH Room Booking page");
@@ -52,7 +53,7 @@ public class RoomBooking_UI extends JFrame implements ActionListener {
 
         // creates the filter option for the user
         String filterOptions[] = {"Number", "Name", "Floor"};
-        filter = new JComboBox(filterOptions);
+        filter = new JComboBox<>(filterOptions);
         filter.addActionListener(this);
         filter.setFont(new Font("Arial", Font.PLAIN, 15));
         filter.setSize(80, 20);
@@ -68,8 +69,19 @@ public class RoomBooking_UI extends JFrame implements ActionListener {
         exitListPanel.addActionListener(this);
         c.add(exitListPanel);
 
-        setVisible(true);
+        Room_Data_RW rData = new Room_Data_RW();
+        rData.toReadCSV_Room();
+        String[][] rRowData  = rData.getDataList();
+        String[] rColumnData = rData.getHeaderList();
 
+        JTable table = new JTable(rRowData, rColumnData);
+        table.setBounds(100, 150, 700, 350);
+        table.setFillsViewportHeight(true);
+        JScrollPane sp = new JScrollPane(table);
+        c.add(table);
+        c.add(sp);
+
+        setVisible(true);
     }
 
     public void setFilter(String str_in) {
@@ -88,9 +100,8 @@ public class RoomBooking_UI extends JFrame implements ActionListener {
             
         }
         if (e.getSource() == exitListPanel) {
-            new Controller();
+            new Welcome();
             dispose();
         }
-
     }
 }

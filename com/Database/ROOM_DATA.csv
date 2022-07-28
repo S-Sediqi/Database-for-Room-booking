@@ -1,3 +1,8 @@
 Status,RoomNo,RoomName,Location,Capacity,Resources
 OPEN, 205, lecture, 3.floor, 40, projector
 OPEN, 405, PC pool, 4.floor, 30, projector-25PCs
+OPEN, 106, Seminar, 1.floor, 30, White board-Black board
+OPEN, 110, Lecture, 1.floor, 50, Board-Projector
+OPEN, 201, PC pool, 2.floor, 30, 25PCs-Projector-White board
+OPEN, 303, Seminar, 3.floor, 30, Projector-board
+OPEN, 401, Seminar, 4.floor, 35, board-Projector

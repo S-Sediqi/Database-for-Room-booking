@@ -1,13 +1,13 @@
 package com.userUI;
 
 import com.Logic.*;
-import com.main.Controller;
+import com.main.*;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class UserRegistration_UI extends JFrame implements ActionListener {
+public class UserSelfReg_UI extends JFrame implements ActionListener {
 
   // Elements of the UI for User Registration
   private Container c;
@@ -36,7 +36,7 @@ public class UserRegistration_UI extends JFrame implements ActionListener {
   private JButton exitButton;
 
   // the constructor creates each elements of the User Registration UI
-  public UserRegistration_UI() {
+  public UserSelfReg_UI() {
     setTitle("Registration");
     setBounds(300, 90, 900, 600);
     setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
@@ -175,9 +175,9 @@ public class UserRegistration_UI extends JFrame implements ActionListener {
     c.add(reset);
 
     // closes this specific input panel for user
-    exitButton = new JButton("Exit");
+    exitButton = new JButton("Main Panel");
     exitButton.setFont(new Font("Arial", Font.PLAIN, 15));
-    exitButton.setSize(90, 20);
+    exitButton.setSize(120, 20);
     exitButton.setLocation(300, 450);
     exitButton.setFocusable(false);
     exitButton.addActionListener(this);
@@ -283,7 +283,7 @@ public class UserRegistration_UI extends JFrame implements ActionListener {
     }
     // gets the user out of the panel
     else if(e.getSource() == exitButton){
-      new Controller();
+      new Welcome();
       dispose();
     }
   }
